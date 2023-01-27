@@ -7,7 +7,7 @@ import hashlib
 from datetime import timedelta
 
 
-connection = psycopg2.connect("host=localhost dbname=s2022054 user=s2022054 password=QWbFwLfQ")
+connection = psycopg2.connect("host= dbname= user= password=")
 
 app = Flask(__name__)
 #この鍵はなんでも良く、乱数で生成する。このままでもいい
