@@ -1,0 +1,198 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            チャット
+        </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="chat accordion-body p-4">
+                <form action="./games" method="POST">
+                    <label class="form-label">ユーザ名:</label>
+                    {% if not "uname" in session %}
+                        <input class="form-control" type="text" name="uname"><br />
+                    {% else %}
+                        <input class="form-control" type="text" value ={{ session["uname"] }}  name="uname"><br />
+                    {% endif %}
+                    <label class="form-label">message:</label>
+                    <input class="form-control" type="text" name="message" size="40"><br />
+                    <input class="btn btn-primary" type="submit" value="chat!">
+                </form>
+
+                <div class="bg-light p-4 mt-3">
+                    {% for eachpost in chat %}
+                    <div class="message d-flex flex-row align-items-start mb-4">
+                        <div class="message-icon rounded-circle bg-secondary text-white fs-3">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <dl>
+                            <dt>
+                                <p class="message-text p-2 ms-2 mb-0 bg-warning">{{ eachpost[2] }}</p>
+                            </dt>
+                            <dt>
+                                <p>{{ eachpost[1] }}: ({{ eachpost[3] }})</p>
+                            </dt>
+                        </dl>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container bg-light mt-3 mb-5 p-3">
+    <h1>試合日程・結果</h1>
+    <h2 class="m-3"><span class="badge bg-secondary">グループステージ・第１日（全３日）</span></h2>
+    <div class="row">
+        {% for eachpost in group_day1 %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ eachpost[1] }}</h4>
+                    <p class="card-text"><a href="{{ eachpost[3] }}">{{ eachpost[2] }}</a></p>
+                    <h5 class="card-text">{{ eachpost[4] }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ eachpost[5] }}</li>
+                    <li class="list-group-item">{{ eachpost[6] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループステージ・第２日（全３日）</span></h2>
+    <div class="row">
+        {% for eachpost in group_day2 %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ eachpost[1] }}</h4>
+                    <p class="card-text"><a href="{{ eachpost[3] }}">{{ eachpost[2] }}</a></p>
+                    <h5 class="card-text">{{ eachpost[4] }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ eachpost[5] }}</li>
+                    <li class="list-group-item">{{ eachpost[6] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">グループステージ・第３日（全３日）</span></h2>
+    <div class="row">
+        {% for eachpost in group_day3 %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ eachpost[1] }}</h4>
+                    <p class="card-text"><a href="{{ eachpost[3] }}">{{ eachpost[2] }}</a></p>
+                    <h5 class="card-text">{{ eachpost[4] }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ eachpost[5] }}</li>
+                    <li class="list-group-item">{{ eachpost[6] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">ラウンド16</span></h2>
+    <div class="row">
+        {% for eachpost in round_of_16 %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ eachpost[1] }}</h4>
+                    <p class="card-text"><a href="{{ eachpost[3] }}">{{ eachpost[2] }}</a></p>
+                    <h5 class="card-text">{{ eachpost[4] }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ eachpost[5] }}</li>
+                    <li class="list-group-item">{{ eachpost[6] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">準々決勝</span></h2>
+    <div class="row">
+        {% for eachpost in round_of_8 %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ eachpost[1] }}</h4>
+                    <p class="card-text"><a href="{{ eachpost[3] }}">{{ eachpost[2] }}</a></p>
+                    <h5 class="card-text">{{ eachpost[4] }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ eachpost[5] }}</li>
+                    <li class="list-group-item">{{ eachpost[6] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">準決勝</span></h2>
+    <div class="row">
+        {% for eachpost in semi_finals %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ eachpost[1] }}</h4>
+                    <p class="card-text"><a href="{{ eachpost[3] }}">{{ eachpost[2] }}</a></p>
+                    <h5 class="card-text">{{ eachpost[4] }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ eachpost[5] }}</li>
+                    <li class="list-group-item">{{ eachpost[6] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">３位決定戦</span></h2>
+    <div class="row">
+        {% for eachpost in third_place_match %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ eachpost[1] }}</h4>
+                    <p class="card-text"><a href="{{ eachpost[3] }}">{{ eachpost[2] }}</a></p>
+                    <h5 class="card-text">{{ eachpost[4] }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ eachpost[5] }}</li>
+                    <li class="list-group-item">{{ eachpost[6] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h2 class="m-3"><span class="badge bg-secondary">決勝</span></h2>
+    <div class="row">
+        {% for eachpost in final %}
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ eachpost[1] }}</h4>
+                    <p class="card-text"><a href="{{ eachpost[3] }}">{{ eachpost[2] }}</a></p>
+                    <h5 class="card-text">{{ eachpost[4] }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ eachpost[5] }}</li>
+                    <li class="list-group-item">{{ eachpost[6] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<footer class="blog-footer">
+    <!-- <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+    <!-- <p><a href="#">Back to top</a></p> -->
+</footer>
+{% endblock %}

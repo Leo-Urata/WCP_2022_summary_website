@@ -1,0 +1,102 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class="container bg-light mt-3 mb-5 p-1">
+    <h1>{{ contents }}代表</h1>
+    <h3 class="text-success m-3">■代表メンバー</h3>
+    <div class="m-5">
+        <h5>▽GK</h5>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">number</th>
+                    <th scope="col">name</th>
+                    <th scope="col">club</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for eachpost in gk %}
+                <tr>
+                    <td>{{ eachpost[1] }}</td>
+                    <td><a href="{{ eachpost[3] }}"> {{ eachpost[0] }} </td></a>
+                    <td>{{ eachpost[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="m-5">
+        <h5>▽DF</h5>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">number</th>
+                    <th scope="col">name</th>
+                    <th scope="col">club</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for eachpost in df %}
+                <tr>
+                    <td>{{ eachpost[1] }}</td>
+                    <td><a href="{{ eachpost[3] }}"> {{ eachpost[0] }} </td></a>
+                    <td>{{ eachpost[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="m-5">
+        <h5>▽MF</h5>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">number</th>
+                    <th scope="col">name</th>
+                    <th scope="col">club</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for eachpost in mf %}
+                <tr>
+                    <td>{{ eachpost[1] }}</td>
+                    <td><a href="{{ eachpost[3] }}"> {{ eachpost[0] }} </td></a>
+                    <td>{{ eachpost[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="m-5">
+        <h5>▽FW</h5>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">number</th>
+                    <th scope="col">name</th>
+                    <th scope="col">club</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for eachpost in fw %}
+                <tr>
+                    <td>{{ eachpost[1] }}</td>
+                    <td><a href="{{ eachpost[3] }}"> {{ eachpost[0] }} </td></a>
+                    <td>{{ eachpost[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- <h3 class="text-success m-5">■監督</h3> -->
+    <div class="m-5">
+        <h5>▽監督</h5>
+        {% for eachpost in mn %}
+        <li><a href="{{ eachpost[1] }}">{{ eachpost[0] }}</li></a>
+        {% endfor %}
+    </div>
+</div>
+<footer class="blog-footer">
+    <!-- <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+    <!-- <p><a href="#">Back to top</a></p> -->
+</footer>
+{% endblock %}
